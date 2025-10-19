@@ -1,0 +1,398 @@
+:root {
+    --primary-color: #046A38; /* Pakistan green */
+    --secondary-color: #01411C;
+    --accent-color: #F8F1D3;
+    --text-color: #333;
+    --light-bg: #F9F9F9;
+}
+
+body {
+    font-family: 'Poppins', 'Noto Sans Arabic', sans-serif;
+    color: var(--text-color);
+}
+
+.navbar-brand {
+    font-weight: 700;
+    color: var(--primary-color) !important;
+}
+
+.navbar {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.auth-buttons {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 14px;
+    padding: 8px 20px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    min-width: 80px;
+    text-align: center;
+}
+
+.btn-login {
+    color: #000000;
+    background-color: transparent;
+    border: 1px solid rgba(4, 13, 252, 0.3);
+}
+
+.btn-login:hover {
+    background-color: #3a5bef;
+    border-color: #3a5bef;
+    color: #ffffff;
+}
+
+.btn-register {
+    color: #ffffff;
+    background-color: #4a6bff;
+    border: 1px solid #4a6bff;
+}
+
+.btn-register:hover {
+    background-color: #022ff9;
+    border-color: #3a5bef;
+    color: #ffffff;
+}
+
+.btn i {
+    margin-right: 6px;
+}
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: white;
+}
+
+.hero-section {
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('../images/header/musical_festival.jpg');
+    background-size: cover;
+    background-position: center;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+}
+
+.btn-outline-primary {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.price-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+}
+
+.section-header {
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.section-header:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: var(--primary-color);
+}
+
+.testimonial-card .card-body {
+    position: relative;
+}
+
+.testimonial-card .card-body:before {
+    content: '\201C';
+    font-family: Georgia, serif;
+    font-size: 3rem;
+    color: rgba(4, 106, 56, 0.1);
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.event-type-tabs .nav-link {
+    color: var(--text-color);
+    font-weight: 500;
+    border: none;
+    padding: 10px 20px;
+}
+
+.event-type-tabs .nav-link.active {
+    color: var(--primary-color);
+    background-color: transparent;
+    border-bottom: 3px solid var(--primary-color);
+}
+
+.hybrid-features {
+    background-color: var(--light-bg);
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.tier-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+.tier-budget {
+    background-color: #FFD700;
+    color: #333;
+}
+
+.tier-standard {
+    background-color: #C0C0C0;
+    color: #333;
+}
+
+.tier-premium {
+    background-color: #E5E4E2;
+    color: #333;
+}
+
+.service-icon {
+    color: var(--primary-color);
+}
+
+.search-section {
+    background-color: var(--light-bg);
+}
+
+/* Modal Styles */
+.modal-header {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.modal-header .btn-close {
+    filter: invert(1);
+}
+
+/* Form Styles */
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(4, 106, 56, 0.25);
+}
+
+/*--------------------------- Footer Styles --------------------------------*/
+footer {
+    background-color: #343a40;
+    color: white;
+    padding: 50px 5% 20px;
+    margin-top: 50px;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-section {
+    margin-bottom: 30px;
+}
+
+.footer-section h3 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+    color: #adb5bd;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-section ul li a:hover {
+    color: white;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.logo img {
+    height: 40px;
+}
+.social {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.social a {
+    color: white;
+    font-size: 20px;
+    margin: 0 10px;
+    transition: color 0.3s;
+}
+
+.social a:hover {
+    color: #4a6bff;
+}
+
+.copyright {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #495057;
+    color: #adb5bd;
+    font-size: 14px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-section {
+        min-height: 50vh;
+    }
+    
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+    
+    .auth-buttons {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .btn {
+        width: 100%;
+    }
+    
+    .navbar-collapse {
+        margin-top: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-section h1 {
+        font-size: 1.75rem;
+    }
+    
+    .section-header h2 {
+        font-size: 1.5rem;
+    }
+    
+    .card-body {
+        padding: 1rem;
+    }
+}
+
+/* Utility Classes */
+.text-primary {
+    color: var(--primary-color) !important;
+}
+
+.bg-primary {
+    background-color: var(--primary-color) !important;
+}
+
+.border-primary {
+    border-color: var(--primary-color) !important;
+}
+
+/* Loading States */
+.btn-loading {
+    position: relative;
+    color: transparent !important;
+}
+
+.btn-loading:after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    left: 50%;
+    margin-left: -10px;
+    margin-top: -10px;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    border-right-color: transparent;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Focus States for Accessibility */
+a:focus,
+button:focus,
+.btn:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
