@@ -5,12 +5,23 @@ Thumbs.db
 # Ignore sensitive data
 .env
 config/connection.php
+config/config.php
 
-# Ignore uploads
+# Ignore generated and dependency folders
+vendor/
 uploads/
-Database/
+Database/*.sql
+
+# Ignore test cache and logs (but keep test scripts)
+tests/__pycache__/
+tests/logs/
+tests/coverage/
 
 # Ignore IDE/project files
 .vscode/
 .idea/
 *.log
+
+# Allow essential files
+!composer.json
+!composer.lock
