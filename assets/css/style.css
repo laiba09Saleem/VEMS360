@@ -6,7 +6,16 @@
     --light-bg: #F9F9F9;
 }
 
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
 body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
     font-family: 'Poppins', 'Noto Sans Arabic', sans-serif;
     color: var(--text-color);
 }
@@ -228,82 +237,186 @@ body {
 }
 
 /*--------------------------- Footer Styles --------------------------------*/
-footer {
+.custom-footer {
     background-color: #343a40;
     color: white;
     padding: 50px 5% 20px;
-    margin-top: 50px;
+    width: 100%;
+    position: relative;
+    bottom: 0;
+    left: 0;
 }
+
 
 .footer-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 0 auto 30px;
 }
 
 .footer-section {
-    margin-bottom: 30px;
+    margin-bottom: 0;
 }
 
 .footer-section h3 {
     font-size: 18px;
     margin-bottom: 20px;
     color: #fff;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.footer-section p {
+    color: #adb5bd;
+    line-height: 1.6;
+    margin-bottom: 20px;
 }
 
 .footer-section ul {
     list-style: none;
     padding: 0;
+    margin: 0;
 }
 
 .footer-section ul li {
-    margin-bottom: 10px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.footer-section ul li i {
+    color: #4a6bff;
+    margin-top: 3px;
+    min-width: 16px;
 }
 
 .footer-section ul li a {
     color: #adb5bd;
     text-decoration: none;
     transition: color 0.3s;
+    flex: 1;
 }
 
 .footer-section ul li a:hover {
-    color: white;
+    color: #4a6bff;
 }
 
 .logo {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
     margin-bottom: 20px;
 }
 
 .logo img {
     height: 40px;
+    width: auto;
 }
+
+.logo h3 {
+    color: #fff;
+    margin: 0;
+    font-size: 24px;
+    font-weight: 700;
+}
+
 .social {
-    text-align: center;
-    margin: 20px 0;
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
 }
 
 .social a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
     color: white;
-    font-size: 20px;
-    margin: 0 10px;
-    transition: color 0.3s;
+    border-radius: 50%;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 18px;
 }
 
 .social a:hover {
-    color: #4a6bff;
+    background: #4a6bff;
+    color: white;
+    transform: translateY(-2px);
 }
 
 .copyright {
     text-align: center;
-    padding-top: 20px;
+    padding-top: 25px;
     border-top: 1px solid #495057;
     color: #adb5bd;
     font-size: 14px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.copyright a {
+    color: #adb5bd;
+    text-decoration: none;
+    margin: 0 5px;
+    transition: color 0.3s;
+}
+
+.copyright a:hover {
+    color: #4a6bff;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .custom-footer {
+        padding: 40px 5% 20px;
+    }
+    
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .footer-section {
+        text-align: center;
+    }
+    
+    .logo {
+        justify-content: center;
+    }
+    
+    .social {
+        justify-content: center;
+    }
+    
+    .footer-section ul li {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .custom-footer {
+        padding: 30px 5% 15px;
+    }
+    
+    .footer-container {
+        gap: 25px;
+    }
+    
+    .logo h3 {
+        font-size: 20px;
+    }
+    
+    .social a {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+    }
 }
 
 /* Responsive Design */
