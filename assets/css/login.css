@@ -82,6 +82,20 @@ button:hover {
   background: #23867f;
 }
 
+.forgot-password {
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+.forgot-password a {
+  color: var(--main-color);
+  text-decoration: none;
+}
+
+.forgot-password a:hover {
+  text-decoration: underline;
+}
+
 .signup-link {
   margin-top: 15px;
   font-size: 14px;

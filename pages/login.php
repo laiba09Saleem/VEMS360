@@ -65,6 +65,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
         <input type="password" name="password" placeholder="Password" required />
         <button type="submit" name="login">Login</button>
       </form>
+      <p class="forgot-password">
+  <a href="ForgetPassword.php">Forgot Password?</a>
+</p>
 
       <p class="signup-link">Don't have an account? <a href="signin.php">Register here</a></p>
     </div>

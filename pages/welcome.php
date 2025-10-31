@@ -1,6 +1,11 @@
 <?php
 session_start();
 require_once __DIR__ . '/../config/connection.php';
+// Restrict access to logged-in users only
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php"); // redirect to login if not logged in
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,6 +31,7 @@ require_once __DIR__ . '/../config/connection.php';
       <a href="about.php">About</a>
       <a href="event.php">Events</a>
       <a href="contact.php">Contact</a>
+      <a href="profile.php"><i class="fa-solid fa-user"></i> Profile</a>
     </nav>
     <div class="nav-btns">
       <a href="create_event.php" class="btn primary"><i class="fa-solid fa-plus"></i> Create Event</a>

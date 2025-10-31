@@ -1,28 +1,68 @@
-# Ignore system files
+########################################
+# 🌐 VEMS360 Project - .gitignore File #
+########################################
+
+# ===== System / OS Files =====
 .DS_Store
 Thumbs.db
 
-# Ignore sensitive data
+# ===== Sensitive Configuration =====
 .env
 config/connection.php
 config/config.php
 
-# Ignore generated and dependency folders
-vendor/
-uploads/
-Database/*.sql
+# ===== Email Libraries & Credentials =====
+PHPMailer/
+includes/mail/PHPMailer/
+includes/mail/send_mail.php  # contains Gmail App password
 
-# Ignore test cache and logs (but keep test scripts)
+# ===== Dependencies =====
+vendor/
+
+# ===== Database Dumps =====
+Database/*.sql
+*.sql
+
+# ===== Uploaded & Temporary Files =====
+uploads/
+assets/uploads/
+images/uploads/
+profile_pics/
+temp/
+tmp/
+
+# ===== Cache, Logs, and Backups =====
+*.log
+*.bak
+*.tmp
+cache/
+logs/
+
+# ===== Testing Files =====
+tests/
 tests/__pycache__/
 tests/logs/
 tests/coverage/
-tests/
 
-# Ignore IDE/project files
+# ===== IDE & Editor Settings =====
 .vscode/
 .idea/
-*.log
+*.sublime-project
+*.sublime-workspace
 
-# Allow essential files
+# ===== Node / Frontend Assets (if any) =====
+node_modules/
+npm-debug.log
+yarn.lock
+package-lock.json
+
+# ===== Allow Essential Composer Files =====
 !composer.json
 !composer.lock
+
+# ===== Allow Public Project Files =====
+!index.php
+!pages/
+!dashboard/
+!includes/
+!assets/

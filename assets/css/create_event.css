@@ -1,0 +1,131 @@
+:root {
+  --bg-color: #0a0e17;
+  --text-color: #e8e8e8;
+  --main-color: #0077b6;
+  --accent-color: #00b4d8;
+  --card-bg: #111827;
+  --border: #1e293b;
+  --radius: 14px;
+  --font: 'Poppins', sans-serif;
+  --shadow: 0 6px 20px rgba(0,0,0,0.25);
+}
+
+body {
+  background: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--font);
+  margin: 0;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 6%;
+  background: rgba(10,14,23,0.8);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo img {
+  width: 40px;
+}
+
+.logo h2 {
+  color: var(--accent-color);
+  font-weight: 600;
+}
+
+.nav-links a {
+  color: #ccc;
+  margin: 0 15px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  color: var(--accent-color);
+}
+
+.form-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
+  padding: 40px 0;
+}
+
+.form-container {
+  background: var(--card-bg);
+  padding: 45px 50px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  width: 90%;
+  max-width: 600px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: var(--accent-color);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-weight: 500;
+  margin-top: 15px;
+  margin-bottom: 6px;
+  color: #cbd5e1;
+}
+
+input, select, textarea {
+  padding: 12px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: #1a2234;
+  color: #e8e8e8;
+  outline: none;
+  transition: 0.3s;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 6px rgba(0,180,216,0.3);
+}
+
+.btn {
+  margin-top: 25px;
+  padding: 12px;
+  border: none;
+  border-radius: var(--radius);
+  background: linear-gradient(45deg, var(--main-color), var(--accent-color));
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+.message {
+  background: #16213e;
+  border-left: 4px solid var(--accent-color);
+  padding: 12px 18px;
+  margin-bottom: 15px;
+  color: #b0f0ff;
+  border-radius: var(--radius);
+  text-align: center;
+}
