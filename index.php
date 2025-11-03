@@ -1,153 +1,286 @@
 <?php
-require_once 'config/config.php';
-require_once 'includes/header.php';
+require_once __DIR__ . '/config/connection.php';
+require_once __DIR__ . '/config/config.php';
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="assets/images/logo.png">
-    <title><?php echo SITE_NAME; ?></title>
-    
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="assets/css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome | VEMS360 - Event Management System</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    :root {
+      --main-color: #00adb5;
+      --bg-dark: #0e0e0e;
+      --bg-light: #121212;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--bg-dark);
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 50px;
+      background-color: var(--bg-light);
+      border-bottom: 1px solid #222;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: var(--main-color);
+      text-decoration: none;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    nav a {
+      color: #ccc;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--main-color);
+    }
+
+    /* Mobile Menu Icon */
+    .menu-toggle {
+      display: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: var(--main-color);
+    }
+
+    /* Hero */
+    .hero {
+      background: url('assets/images/header/musical_festival.jpg') center/cover no-repeat;
+      height: 90vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background-color: rgba(0, 0, 0, 0.6);
+      background-blend-mode: overlay;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: #ddd;
+      margin-bottom: 30px;
+    }
+
+    .hero a {
+      background: var(--main-color);
+      padding: 12px 30px;
+      border-radius: 30px;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    .hero a:hover {
+      background: #008c95;
+    }
+
+    /* About */
+    .about {
+      padding: 60px 80px;
+      text-align: center;
+    }
+
+    .about h2 {
+      color: var(--main-color);
+      font-size: 2rem;
+    }
+
+    .about p {
+      color: #aaa;
+      max-width: 700px;
+      margin: 15px auto;
+      line-height: 1.7;
+    }
+
+    /* Events */
+    .events {
+      padding: 60px 80px;
+      background-color: var(--bg-light);
+    }
+
+    .events h2 {
+      text-align: center;
+      color: var(--main-color);
+      margin-bottom: 40px;
+    }
+
+    .event-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .event-card {
+      background: #1c1c1c;
+      border-radius: 10px;
+      overflow: hidden;
+      transition: 0.3s;
+    }
+
+    .event-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .event-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .event-card h3 {
+      margin: 15px;
+      color: #fff;
+    }
+
+    .event-card p {
+      color: #bbb;
+      margin: 0 15px 15px;
+    }
+
+    /* Footer */
+    footer {
+      background: #0a0a0a;
+      text-align: center;
+      padding: 20px;
+      border-top: 1px solid #222;
+      color: #777;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      header {
+        padding: 15px 25px;
+      }
+
+      nav {
+        display: none;
+        flex-direction: column;
+        background-color: var(--bg-light);
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 200px;
+        border-left: 1px solid #222;
+        padding: 15px;
+        text-align: right;
+      }
+
+      nav.active {
+        display: flex;
+      }
+
+      nav a {
+        margin: 10px 0;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .about, .events {
+        padding: 40px 25px;
+      }
+    }
+  </style>
 </head>
 
-<!-- Hero Section -->
-<header class="hero-section" id="home">
-    <div class="container h-100">
-        <div class="row h-100 align-items-center">
-            <div class="col-12 text-center text-white">
-                <h1 class="display-4 fw-bold mb-4">Your Perfect Event, Our Expertise</h1>
-                <p class="lead mb-4">From virtual meetings to grand weddings - we've got you covered across Pakistan</p>
-                <div class="d-flex justify-content-center flex-wrap gap-3">
-                    <a href="#venues" class="btn btn-primary btn-lg px-4">Explore Venues</a>
-                    <a href="#event-types" class="btn btn-outline-light btn-lg px-4">Virtual Events</a>
-                </div>
-            </div>
-        </div>
+<body>
+  <header>
+    <a href="index.php" class="logo">VEMS360</a>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <nav id="navMenu">
+      <a href="pages/event.php">Events</a>
+      <a href="pages/about.php">About</a>
+      <a href="pages/contact.php">Contact</a>
+      <a href="pages/login.php">Login</a>
+      <a href="pages/register.php">Register</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Welcome to VEMS360</h1>
+    <p>Your All-in-One Event Management System</p>
+    <a href="pages/event.php">Explore Events</a>
+  </section>
+
+  <section class="about">
+    <h2>About VEMS360</h2>
+    <p>VEMS360 is a complete Event Management System that helps you organize, manage, and attend virtual, hybrid, and physical events with ease. From registration to rating, everything is just a few clicks away!</p>
+  </section>
+
+  <section class="events">
+    <h2>Featured Events</h2>
+    <div class="event-grid">
+      <div class="event-card">
+        <img src="assets/images/events/Event_1.jpg" alt="Event">
+        <h3>Tech Conference 2025</h3>
+        <p>Join the top innovators and creators shaping the future of technology.</p>
+      </div>
+      <div class="event-card">
+        <img src="assets/images/events/Event 2.jpg" alt="Event">
+        <h3>Music Fest</h3>
+        <p>Experience live music from global artists in one amazing festival.</p>
+      </div>
+      <div class="event-card">
+        <img src="assets/images/events/Event 3.jpg" alt="Event">
+        <h3>Startup Expo</h3>
+        <p>Showcase your business idea and connect with investors worldwide.</p>
+      </div>
     </div>
-</header>
+  </section>
 
-<section class="search-section py-4 bg-light">
-    <div class="container">
-        <form id="searchForm">
-            <div class="row g-3">
-                <div class="col-md-3">
-                    <select class="form-select" name="event_type" required>
-                        <option value="" selected disabled>Event Type</option>
-                        <option value="wedding">Wedding</option>
-                        <option value="corporate">Corporate Meeting</option>
-                        <option value="birthday">Birthday Party</option>
-                        <option value="conference">Conference</option>
-                        <option value="exhibition">Exhibition</option>
-                        <option value="virtual">Virtual Event</option>
-                        <option value="hybrid">Hybrid Event</option>
-                    </select>
-                </div>
-                <div class="col-md-3">
-                    <select class="form-select" name="location" required>
-                        <option value="" selected disabled>Location</option>
-                        <option value="karachi">Karachi</option>
-                        <option value="lahore">Lahore</option>
-                        <option value="islamabad">Islamabad</option>
-                        <option value="rawalpindi">Rawalpindi</option>
-                        <option value="peshawar">Peshawar</option>
-                        <option value="quetta">Quetta</option>
-                        <option value="faisalabad">Faisalabad</option>
-                        <option value="multan">Multan</option>
-                        <option value="online">Online/Virtual</option>
-                    </select>
-                </div>
-                <div class="col-md-2">
-                    <input type="date" class="form-control" name="event_date" required>
-                </div>
-                <div class="col-md-2">
-                    <select class="form-select" name="budget_range">
-                        <option value="" selected disabled>Budget Range</option>
-                        <option value="0-50000">Under Rs. 50,000</option>
-                        <option value="50000-200000">Rs. 50,000 - 200,000</option>
-                        <option value="200000-500000">Rs. 200,000 - 500,000</option>
-                        <option value="500000-1000000">Rs. 500,000 - 1,000,000</option>
-                        <option value="1000000+">Over Rs. 1,000,000</option>
-                    </select>
-                </div>
-                <div class="col-md-2">
-                    <button type="submit" class="btn btn-primary w-100">Search</button>
-                </div>
-            </div>
-        </form>
-    </div>
-</section>
+  <footer>
+    &copy; <?php echo date('Y'); ?> VEMS360. All Rights Reserved.
+  </footer>
 
-<section class="py-5" id="event-types">
-    <div class="container">
-        <div class="section-header mb-5 text-center">
-            <h2 class="fw-bold">Our Event Solutions</h2>
-            <p class="text-muted">Choose the perfect format for your event</p>
-        </div>
-        
-        <ul class="nav nav-tabs event-type-tabs justify-content-center mb-4" id="eventTypeTabs" role="tablist">
-            <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="physical-tab" data-bs-toggle="tab" data-bs-target="#physical" type="button" role="tab">Physical Events</button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="virtual-tab" data-bs-toggle="tab" data-bs-target="#virtual" type="button" role="tab">Virtual Events</button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="hybrid-tab" data-bs-toggle="tab" data-bs-target="#hybrid" type="button" role="tab">Hybrid Events</button>
-            </li>
-        </ul>
-        
-        <div class="tab-content" id="eventTypeTabsContent">
-            <div class="tab-pane fade show active" id="physical" role="tabpanel">
-                <?php include 'includes/event-types/physical.php'; ?>
-            </div>
-            
-            <div class="tab-pane fade" id="virtual" role="tabpanel">
-                <?php include 'includes/event-types/virtual.php'; ?>
-            </div>
-            
-            <div class="tab-pane fade" id="hybrid" role="tabpanel">
-                <?php include 'includes/event-types/hybrid.php'; ?>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="py-5 bg-light" id="venues">
-    <?php include 'includes/featured-venues.php'; ?>
-</section>
-
-<section class="py-5" id="services">
-    <?php include 'includes/services.php'; ?>
-</section>
-
-<section class="py-5 bg-light">
-    <?php include 'includes/budget-options.php'; ?>
-</section>
-
-<section class="py-5">
-    <?php include 'includes/testimonials.php'; ?>
-</section>
-
-<section class="py-5 bg-light" id="about">
-    <?php include 'includes/about.php'; ?>
-</section>
-
-<section class="py-5" id="contact">
-    <?php include 'includes/contact.php'; ?>
-</section>
-
-<?php
-require_once 'includes/footer.php';
-?>
+  <script>
+    function toggleMenu() {
+      document.getElementById("navMenu").classList.toggle("active");
+    }
+  </script>
+</body>
+</html>

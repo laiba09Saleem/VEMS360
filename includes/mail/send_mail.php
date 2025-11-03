@@ -6,6 +6,11 @@ require_once 'PHPMailer/PHPMailer.php';
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
+// Load environment variables
+require_once __DIR__ . '/../vendor/autoload.php';
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
+$dotenv->load();
+
 /**
  * Send contact form submission email
  */
@@ -16,16 +21,16 @@ function sendContactEmail($name, $email, $phone, $event_type, $message)
     try {
         // SMTP Configuration
         $mail->isSMTP();
-        $mail->Host = 'smtp.gmail.com';
+        $mail->Host = $_ENV['MAIL_HOST'];
         $mail->SMTPAuth = true;
-        $mail->Username = 'laibasaleem784@gmail.com'; // Your Gmail address
-        $mail->Password = 'czxc ljyy uoih xwde'; // Gmail App Password
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-        $mail->Port = 587;
+        $mail->Username = $_ENV['MAIL_USERNAME'];
+        $mail->Password = $_ENV['MAIL_PASSWORD'];
+        $mail->SMTPSecure = $_ENV['MAIL_ENCRYPTION'];
+        $mail->Port = $_ENV['MAIL_PORT'];
 
         // Sender & Receiver
-        $mail->setFrom($email, $name);
-        $mail->addAddress('laibasaleem784@gmail.com', 'VEMS360');
+        $mail->setFrom($_ENV['MAIL_FROM_ADDRESS'], $_ENV['MAIL_FROM_NAME']);
+        $mail->addAddress($_ENV['MAIL_FROM_ADDRESS'], 'VEMS360');
 
         // Email content
         $mail->isHTML(false);
@@ -62,15 +67,15 @@ function sendVerificationEmail($email, $fullName, $verification_link)
     try {
         // SMTP Configuration
         $mail->isSMTP();
-        $mail->Host = 'smtp.gmail.com';
+        $mail->Host = $_ENV['MAIL_HOST'];
         $mail->SMTPAuth = true;
-        $mail->Username = 'laibasaleem784@gmail.com'; // Your Gmail address
-        $mail->Password = 'czxc ljyy uoih xwde'; // Gmail App Password
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-        $mail->Port = 587;
+        $mail->Username = $_ENV['MAIL_USERNAME'];
+        $mail->Password = $_ENV['MAIL_PASSWORD'];
+        $mail->SMTPSecure = $_ENV['MAIL_ENCRYPTION'];
+        $mail->Port = $_ENV['MAIL_PORT'];
 
         // Sender & Receiver
-        $mail->setFrom('laibasaleem784@gmail.com', 'VEMS360');
+        $mail->setFrom($_ENV['MAIL_FROM_ADDRESS'], $_ENV['MAIL_FROM_NAME']);
         $mail->addAddress($email, $fullName);
 
         // Email content

@@ -4,10 +4,10 @@ require_once __DIR__ . '/../config/connection.php';
 require_once __DIR__ . '/../includes/mail/send_mail.php';
 
 if (!defined('BASE_URL')) {
-    define('BASE_URL', 'http://localhost/vems360/');
+    define('BASE_URL', 'https://vems360.infinityfreeapp.com/');
 }
 
-// Check if Admin/Organizer already exist
+
 $admin_exists = $conn->query("SELECT COUNT(*) AS c FROM form WHERE Role='Admin'")->fetch_assoc()['c'] > 0;
 $organizer_exists = $conn->query("SELECT COUNT(*) AS c FROM form WHERE Role='Organizer'")->fetch_assoc()['c'] > 0;
 
@@ -34,7 +34,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register'])) {
         $stmt->bind_param("sssssss", $fname, $lname, $username, $email, $hashed, $role, $verification_code);
 
         if ($stmt->execute()) {
-            $verification_link = BASE_URL . "pages/verify.php?code=$verification_code";
+            // ✅ Correct verification link (auto base URL)
+                  $verification_link = BASE_URL . "pages/verify.php?code=" . urlencode($verification_code);
+
+
             if (sendVerificationEmail($email, "$fname $lname", $verification_link)) {
                 echo "<script>alert('Registration successful! Please check your email for verification.');</script>";
                 echo "<script>window.location.href='login.php';</script>";
