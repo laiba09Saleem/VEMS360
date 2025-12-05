@@ -1,7 +1,4 @@
 # VEMS360 - Virtual Event Management System
-
-
-![VEMS360 Screenshot](./assets/vems360-screenshot.png)
 *VEMS360 Dashboard Preview*
 
 **Description:**
@@ -34,7 +31,7 @@ VEMS360 is a **web-based event management platform** designed for **virtual, hyb
 
 ## Live Demo / Repository
 
-* [GitHub Repository](https://github.com/yourusername/VEMS360)
+* [GitHub Repository](https://github.com/laiba09Saleem/VEMS360.git)
 * *(Optional: Add a link to live demo if hosted)*
 
 ## How to Run Locally
@@ -42,7 +39,7 @@ VEMS360 is a **web-based event management platform** designed for **virtual, hyb
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/VEMS360.git
+   git clone https://github.com/laiba09Saleem/VEMS360.git
    ```
 2. Import `vems360.sql` into your MySQL database.
 3. Update database credentials in `config/connection.php`.
