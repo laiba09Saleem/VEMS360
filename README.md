@@ -1,10 +1,13 @@
 # VEMS360 - Virtual Event Management System
 
+
 ![VEMS360 Screenshot](./assets/vems360-screenshot.png)
 *VEMS360 Dashboard Preview*
 
 **Description:**
 VEMS360 is a **web-based event management platform** designed for **virtual, hybrid, and physical events**. It provides a seamless experience for **admins, organizers, and attendees** to manage, track, and participate in events efficiently.
+
+**Live Demo:** [vemshub.xo.je]
 
 **⚠ Note:** This platform is **optimized for laptop/desktop use only**. Mobile responsiveness is not fully supported.
 
